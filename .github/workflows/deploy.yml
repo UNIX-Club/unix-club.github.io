@@ -30,7 +30,6 @@ jobs:
         with:
           python-version: '3.11'
 
-       Tar target make script executable
       - name: Make script executable
         run: chmod +x ./build.sh
 

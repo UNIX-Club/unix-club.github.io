@@ -1,0 +1,109 @@
+<h1>
+    Meet the Team
+</h1>
+
+<style>
+    .team-intro {
+        font-size: 1.25rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 4rem;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-bottom: 4rem;
+    }
+
+    @media (max-width: 768px) {
+        .team-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+    }
+
+    .team-card {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none !important;
+        color: inherit !important;
+        padding-bottom: 24px;
+        border-bottom: 2px solid var(--nav-border);
+        transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .team-card:hover {
+        border-color: var(--nav-link-hover);
+    }
+
+    .profile-header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+    }
+
+    .profile-name-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+    }
+
+    .profile-name {
+        font-size: 1.5rem !important;
+        font-weight: 700;
+        line-height: 1 !important;
+        margin: 0;
+        letter-spacing: -0.02em;
+        color: var(--nav-text);
+    }
+
+    .profile-role {
+        font-size: 0.8rem !important;
+        font-family: "DejaVu Sans Mono", monospace;
+        color: var(--meta-text);
+        letter-spacing: 0.08em;
+    }
+
+    .profile-bio {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        color: var(--nav-text);
+        opacity: 0.85;
+        margin: 0 !important;
+    }
+
+    .card-action-link {
+        font-family: "DejaVu Sans Mono", monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--nav-link-hover);
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+</style>
+
+<p class="team-intro">
+    We're a team of pragmatic people who like Unix-centric productivity tools, looking to spread the word.
+</p>
+
+<div class="team-grid">
+
+    <div class="team-card">
+        <div class="profile-header">
+            <div class="profile-name-row">
+                <h3 class="profile-name">Max Xu</h3>
+                <a href="https://github.com/maxhxu" class="card-action-link">GitHub</a>
+            </div>
+            <div class="profile-role">Founder, Dev</div>
+        </div>
+        <p class="profile-bio">
+            Amateur coder, dwm and webview(!!) enjoyer.
+        </p>
+    </div>
+
+</div>

@@ -9,14 +9,31 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"
         />
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=DejaVu+Sans:wght@400;700&family=DejaVu+Sans+Mono:wght@400;700&display=swap");
+            @font-face {
+                font-family: 'DejaVu Sans';
+                font-style: normal;
+                font-weight: 400;
+                src: local('DejaVu Sans'),
+                    local('DejaVuSans'),
+                    url('https://fonts.gstatic.com/s/dejavusans/v1/something.woff2') format('woff2'); /* Fallback URL */
+            }
+
+            @font-face {
+                font-family: 'DejaVu Sans';
+                font-style: normal;
+                font-weight: 700;
+                src: local('DejaVu Sans Bold'),
+                    local('DejaVuSans-Bold'),
+                    url('https://fonts.gstatic.com/s/dejavusans/v1/something-bold.woff2') format('woff2');
+            }
 
             body {
                 margin: 0;
                 padding: 0;
                 min-height: 100vh;
-                font-family: "DejaVu Sans", sans-serif !important;
+                font-family: "DejaVu Sans", sans-serif;
             }
+
             @media (prefers-color-scheme: dark) {
                 body {
                     background-color: #0d1117;
@@ -53,6 +70,9 @@
                 background-color: var(--nav-bg);
                 border-bottom: 1px solid var(--nav-border);
                 padding: 12px 24px;
+                position: sticky;
+                top: 0;
+                z-index: 100;
             }
             .brand {
                 font-size: 1.5rem;
@@ -87,10 +107,35 @@
                 font-family: "DejaVu Sans", sans-serif !important;
             }
 
+            .markdown-body p,
+            .markdown-body li {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+                color: var(--nav-text);
+            }
+
+            /* Ensure headings in custom HTML match GitHub's markdown heading weights */
+            .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+                margin-top: 24px;
+                margin-bottom: 16px;
+                font-weight: 600;
+                line-height: 1.25;
+            }
+
+            .markdown-body h2 {
+                font-size: 1.5em;
+                border-bottom: 1px solid var(--nav-border);
+                padding-bottom: .3em;
+            }
+
+            .markdown-body h3 {
+                font-size: 1.25em;
+            }
+
             .article-header {
                 margin-bottom: 2rem;
                 padding-bottom: 1.5rem;
-                border-bottom: 1px solid var(--nav-border);
+                /*border-bottom: 1px solid var(--nav-border);*/
             }
             .article-title {
                 font-size: 2.5rem;
@@ -123,20 +168,19 @@
     </head>
     <body>
         <header class="topbar">
-            <a href="#" class="brand">*NIX_Club</a>
+            <a class="brand">*NIX_Club</a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="{{ROOT}}home.html">Home</a></li>
-                    <li><a href="{{ROOT}}guides.html">Guides</a></li>
+                    <li><a href="{{ROOT}}articles.html">Guides & Articles</a></li>
                     <li><a href="{{ROOT}}people.html">People & Contact</a></li>
                 </ul>
             </nav>
         </header>
 
-        <div id="content" class="markdown-body"></div>
-
-        <script type="text/markdown" id="markdown-source">{{CONTENT}}</script>
-
+        <div id="content" class="markdown-body">
+            {{BODY_SLOT}}
+        </div>
         <script>
 {{JS}}
         </script>

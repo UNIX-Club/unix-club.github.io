@@ -71,8 +71,9 @@ def build_articles_page():
     articles.sort(key=lambda x: x["date"], reverse=True)
 
     articles_html = []
+
+    articles_html.append('<h1 class="page-title">All Articles & Guides</h1>')
     articles_html.append('<div class="articles-container">')
-    articles_html.append('  <h1 class="page-title">All Articles & Guides</h1>')
     articles_html.append('  <div class="articles-grid">')
 
     for art in articles:

@@ -61,5 +61,7 @@ for file_path in DATA_DIR.rglob("*"):
     output_content = output_content.replace("{{ROOT}}", root_prefix)
     output_content = output_content.replace("{{JS}}", js_content)
 
+    print(f"Generated {str(out_path)}")
+
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(output_content)

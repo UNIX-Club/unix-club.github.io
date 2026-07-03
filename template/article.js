@@ -39,7 +39,7 @@ function renderArticleHeader(meta) {
             <h1 class="article-title">${meta.title}</h1>
             <div class="article-meta">
                 ${meta.author ? `<span>By <strong>${meta.author}</strong></span>` : ''}
-                ${meta.date ? `<span>Published: ${meta.date}</span>` : ''}
+                ${meta.date ? `<span>// Published: ${meta.date}</span>` : ''}
             </div>
             ${tagsHTML}
         </div>

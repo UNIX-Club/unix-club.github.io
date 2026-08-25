@@ -1,3 +1,3 @@
 #!/bin/bash
-python scripts/gen.py
-python scripts/gen_articles.py
+python3 scripts/gen.py
+python3 scripts/gen_articles.py

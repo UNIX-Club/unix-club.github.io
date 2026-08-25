@@ -13,7 +13,7 @@ A lightweight, minimal-dependency static site generator (SSG) system built for t
 ├── data/                   # Raw content and source files
 │   ├── articles/           # Markdown-based articles/guides
 │   │   └── vim.md          # Sample article in markdown format
-│   ├── home.md             # Site homepage source content
+│   ├── index.md            # Site homepage source content
 │   └── people.html         # Custom page layout written directly in HTML
 ├── scripts/                # Static site generation engine
 │   ├── gen.py              # Main build engine for content-to-HTML conversion

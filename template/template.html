@@ -2,11 +2,17 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Styled Markdown Article</title>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <title>{{TITLE}}</title>
+        <script
+            src="https://cdn.jsdelivr.net/npm/marked@18.0.11/lib/marked.umd.min.js"
+            integrity="sha384-8HQHvnL5BVAFLDR9zSYfuygnBnO3Y3gB3PF2sahr8aZGR6m48yPhZxm9JTjWnC0l"
+            crossorigin="anonymous"
+        ></script>
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"
+            integrity="sha512-Ya9H+OPj8NgcQk34nCrbehaA0atbzGdZCI2uCbqVRELgnlrh8vQ2INMnkadVMSniC54HChLIh5htabVuKJww8g=="
+            crossorigin="anonymous"
         />
         <style>
             @font-face {
@@ -14,8 +20,7 @@
                 font-style: normal;
                 font-weight: 400;
                 src: local('DejaVu Sans'),
-                    local('DejaVuSans'),
-                    url('https://fonts.gstatic.com/s/dejavusans/v1/something.woff2') format('woff2'); /* Fallback URL */
+                    local('DejaVuSans');
             }
 
             @font-face {
@@ -23,8 +28,7 @@
                 font-style: normal;
                 font-weight: 700;
                 src: local('DejaVu Sans Bold'),
-                    local('DejaVuSans-Bold'),
-                    url('https://fonts.gstatic.com/s/dejavusans/v1/something-bold.woff2') format('woff2');
+                    local('DejaVuSans-Bold');
             }
 
             body {
@@ -132,6 +136,27 @@
                 font-size: 1.25em;
             }
 
+            /* Card titles reuse <h2> for semantics but shouldn't look like a markdown heading */
+            .markdown-body h2.article-card-title {
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-top: 0;
+                margin-bottom: 8px;
+                font-size: 1.25rem;
+            }
+
+            .article-card-footer {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .article-card-footer .article-tags {
+                margin-left: auto;
+            }
+
             .article-header {
                 padding-bottom: 1rem;
                 /*border-bottom: 1px solid var(--nav-border);*/
@@ -168,7 +193,7 @@
     </head>
     <body>
         <header class="topbar">
-            <a class="brand">*NIX_Club</a>
+            <a class="brand" href="{{ROOT}}index.html">*NIX_Club</a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="{{ROOT}}index.html">Home</a></li>

@@ -24,22 +24,28 @@ function parseFrontmatter(markdown) {
     return { data, content };
 }
 
+function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+}
+
 function renderArticleHeader(meta) {
     if (!meta.title) return '';
 
     let tagsHTML = '';
     if (Array.isArray(meta.tags)) {
         tagsHTML = `<div class="article-tags">` +
-            meta.tags.map(tag => `<span class="article-tag">#${tag}</span>`).join('') +
+            meta.tags.map(tag => `<span class="article-tag">#${escapeHtml(tag)}</span>`).join('') +
             `</div>`;
     }
 
     return `
         <div class="article-header">
-            <h1 class="article-title">${meta.title}</h1>
+            <h1 class="article-title">${escapeHtml(meta.title)}</h1>
             <div class="article-meta">
-                ${meta.author ? `<span>By <strong>${meta.author}</strong></span>` : ''}
-                ${meta.date ? `<span>// Published: ${meta.date}</span>` : ''}
+                ${meta.author ? `<span>By <strong>${escapeHtml(meta.author)}</strong></span>` : ''}
+                ${meta.date ? `<span>// Published: ${escapeHtml(meta.date)}</span>` : ''}
             </div>
             ${tagsHTML}
         </div>

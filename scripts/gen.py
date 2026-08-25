@@ -4,6 +4,40 @@ from pathlib import Path
 
 DATA_DIR = Path("data")
 OUT_DIR = Path("out")
+SITE_NAME = "*NIX_Club"
+
+FRONTMATTER_REGEX = re.compile(r"^---\r?\n([\s\S]*?)\r?\n---")
+H1_REGEX = re.compile(r"<h1[^>]*>([\s\S]*?)</h1>", re.IGNORECASE)
+
+
+def frontmatter_title(content):
+    match = FRONTMATTER_REGEX.match(content.replace("\r\n", "\n"))
+    if not match:
+        return None
+    for line in match.group(1).split("\n"):
+        parts = line.split(":")
+        if len(parts) >= 2 and parts[0].strip() == "title":
+            return ":".join(parts[1:]).strip()
+    return None
+
+
+def title_from_filename(stem):
+    if stem.lower() == "index":
+        return "Home"
+    return stem.replace("-", " ").replace("_", " ").title()
+
+
+def page_title(relative_path, file_ext, file_content):
+    if file_ext == ".md":
+        title = frontmatter_title(file_content)
+        if title:
+            return title
+    elif file_ext == ".html":
+        h1_match = H1_REGEX.search(file_content)
+        if h1_match:
+            return re.sub(r"\s+", " ", h1_match.group(1)).strip()
+    return title_from_filename(relative_path.stem)
+
 
 if OUT_DIR.exists():
     shutil.rmtree(OUT_DIR)
@@ -57,9 +91,13 @@ for file_path in DATA_DIR.rglob("*"):
     else:
         body_slot_content = "<p>Something went wrong.</p>"
 
+    title = page_title(relative_path, file_ext, file_content)
+    title_content = f"{title} · {SITE_NAME}" if title else SITE_NAME
+
     output_content = MAIN_TEMPLATE.replace("{{BODY_SLOT}}", body_slot_content)
     output_content = output_content.replace("{{ROOT}}", root_prefix)
     output_content = output_content.replace("{{JS}}", js_content)
+    output_content = output_content.replace("{{TITLE}}", title_content)
 
     print(f"Generated {str(out_path)}")
 

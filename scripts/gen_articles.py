@@ -1,3 +1,4 @@
+import html
 import re
 import shutil
 from pathlib import Path
@@ -68,7 +69,7 @@ def build_articles_page():
             "url": url
         })
 
-    articles.sort(key=lambda x: x["date"], reverse=True)
+    articles.sort(key=lambda x: (x["date"] != "Unknown Date", x["date"]), reverse=True)
 
     articles_html = []
 
@@ -77,23 +78,31 @@ def build_articles_page():
     articles_html.append('  <div class="articles-grid">')
 
     for art in articles:
+        title = html.escape(art["title"])
+        author = html.escape(art["author"])
+        date = html.escape(art["date"])
+        url = html.escape(art["url"])
+        tags = [html.escape(tag) for tag in art["tags"]]
+
         tags_html = ""
-        if art["tags"]:
-            tags_html = '<div class="article-tags">' + "".join(f'<span class="article-tag">#{tag}</span>' for tag in art["tags"]) + '</div>'
+        if tags:
+            tags_html = '<div class="article-tags">' + "".join(f'<span class="article-tag">#{tag}</span>' for tag in tags) + '</div>'
 
         meta_html = []
-        if art["author"]:
-            meta_html.append(f'<span>By <strong>{art["author"]}</strong></span>')
-        if art["date"] and art["date"] != "Unknown Date":
-            meta_html.append(f'<span>Published: {art["date"]}</span>')
+        if author:
+            meta_html.append(f'<span>By <strong>{author}</strong></span>')
+        if date and date != "Unknown Date":
+            meta_html.append(f'<span>Published: {date}</span>')
 
         meta_str = f'<div class="article-meta">{" // ".join(meta_html)}</div>' if meta_html else ''
 
         card = f"""
         <div class="article-card">
-            <h2 class="article-card-title"><a href="{art['url']}">{art['title']}</a></h2>
-            {meta_str}
-            {tags_html}
+            <h2 class="article-card-title"><a href="{url}">{title}</a></h2>
+            <div class="article-card-footer">
+                {meta_str}
+                {tags_html}
+            </div>
         </div>
         """
         articles_html.append(card)
@@ -106,6 +115,7 @@ def build_articles_page():
     output_content = MAIN_TEMPLATE.replace("{{BODY_SLOT}}", body_content)
     output_content = output_content.replace("{{ROOT}}", "./")
     output_content = output_content.replace("{{JS}}", "")
+    output_content = output_content.replace("{{TITLE}}", "Guides & Articles · *NIX_Club")
 
     with open(OUT_DIR / "articles.html", "w", encoding="utf-8") as f:
         f.write(output_content)

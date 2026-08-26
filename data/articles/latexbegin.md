@@ -13,7 +13,7 @@ Using a typesetting system makes your writing and notes more accessible:
 
 - formulas and symbols are rendered cleanly and consistently
 - the final PDF is easier to read and more professional
-- text remains selectable and searchable, making it easier to review later
+- text remains selectable and searchable, making it easier to review and edit later
 - collaboration is easier with cloud editors or version control
 
 We briefly review several options and help you choose the best fit for your situation.
@@ -26,7 +26,7 @@ Learning LaTeX can pay off immediately if you are taking math, science, or engin
 
 A local LaTeX installation gives you the most control, but it requires more setup. A typical setup includes:
 
-- a TeX distribution, such as TeX Live, MiKTeX, or MacTeX
+- a TeX distribution, such as [TeX Live](https://www.tug.org/texlive/), [MiKTeX](https://miktex.org/download), or [MacTeX](https://www.tug.org/mactex/mactex-download.html)
 - a text editor or IDE
 - a PDF viewer or preview tool
 - build commands or a file watcher to compile `.tex` files into PDFs
@@ -43,9 +43,10 @@ Trade-offs:
 - collaboration must be handled through external tools, such as Git
 - must handle backups yourself
 
-With a configurable text editor such as `nvim`, you can add useful tooling, including:
+With a configurable text editor such as [neovim](https://neovim.io/), you can add useful tooling, including:
 
-- snippets: automatically expand short text triggers into full blocks of LaTeX code with fillable placeholders
+- [automatic compilation](https://github.com/lervag/vimtex "General purpose LaTex plugin for vim/nvim"): automatically generate document after editing source.
+- [snippets](https://github.com/SirVer/ultisnips "UltiSnips nvim plugin"): automatically expand short text triggers into full blocks of LaTeX code with fillable placeholders
 - autocomplete or completions: real-time suggestions that predict and fill in commands/filenames
 - error checking: automated code analysis that detects syntax errors
 
@@ -53,7 +54,7 @@ We (the *NIX club) are happy to help if you run into any issues with your local 
 
 ### Overleaf
 
-Overleaf is an online LaTeX editor. It combines a text editor, compiler, PDF viewer, and collaboration features in one web app. It is a convenient option if you do not want to set up a local LaTeX environment.
+[Overleaf](https://www.overleaf.com/ "www.overleaf.com") is an online LaTeX editor. It combines a text editor, compiler, PDF viewer, and collaboration features in one web app. It is a convenient option if you do not want to set up a local LaTeX environment.
 
 Advantages:
 

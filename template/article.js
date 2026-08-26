@@ -43,11 +43,13 @@ function renderArticleHeader(meta) {
     return `
         <div class="article-header">
             <h1 class="article-title">${escapeHtml(meta.title)}</h1>
-            <div class="article-meta">
-                ${meta.author ? `<span>By <strong>${escapeHtml(meta.author)}</strong></span>` : ''}
-                ${meta.date ? `<span>// Published: ${escapeHtml(meta.date)}</span>` : ''}
+            <div class="article-card-footer">
+                <div class="article-meta">
+                    ${meta.author ? `<span>By <strong>${escapeHtml(meta.author)}</strong></span>` : ''}
+                    ${meta.date ? `<span>// Published: ${escapeHtml(meta.date)}</span>` : ''}
+                </div>
+                ${tagsHTML}
             </div>
-            ${tagsHTML}
         </div>
     `;
 }

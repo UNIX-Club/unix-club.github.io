@@ -1,6 +1,6 @@
-# `\*NIX_Club` Website
+# `UNIX-Club` Website
 
-A lightweight, minimal-dependency static site generator (SSG) system built for the `\*NIX_Club` Website.
+A lightweight, minimal-dependency static site generator (SSG) system built for the `UNIX-Club` Website.
 
 ## Dependencies
 - Python 3.x

@@ -31,3 +31,5 @@ In rare situations, more passes are needed.
 - Keeping auxiliary files makes ordinary edits cheap. If no significant layout changes occur, references resolve in just one run.
 
 Dealing with all of this by hand is quite painful, which is why `latexmk` exists. It automates the process of compiling a LaTeX document so you don't have to run a collection of obscure programs in an arcane order for your document to come out right.
+
+<iframe src="https://skdoctool.maxxu.dev/files/6"></iframe>

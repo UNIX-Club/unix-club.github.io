@@ -115,7 +115,7 @@ def build_articles_page():
     output_content = MAIN_TEMPLATE.replace("{{BODY_SLOT}}", body_content)
     output_content = output_content.replace("{{ROOT}}", "./")
     output_content = output_content.replace("{{JS}}", "")
-    output_content = output_content.replace("{{TITLE}}", "Guides & Articles · *NIX_Club")
+    output_content = output_content.replace("{{TITLE}}", "Guides & Articles · UNIX-Club")
 
     with open(OUT_DIR / "articles.html", "w", encoding="utf-8") as f:
         f.write(output_content)

@@ -1,5 +1,7 @@
 # `UNIX-Club` Website
 
+[![Website](https://github.com/UNIX-Club/unix-club.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/UNIX-Club/unix-club.github.io/actions/workflows/deploy.yml)
+
 A lightweight, minimal-dependency static site generator (SSG) system built for the `UNIX-Club` Website.
 
 ## Dependencies

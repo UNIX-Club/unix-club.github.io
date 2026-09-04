@@ -4,7 +4,7 @@ from pathlib import Path
 
 DATA_DIR = Path("data")
 OUT_DIR = Path("out")
-SITE_NAME = "*NIX_Club"
+SITE_NAME = "UNIX-Club"
 
 FRONTMATTER_REGEX = re.compile(r"^---\r?\n([\s\S]*?)\r?\n---")
 H1_REGEX = re.compile(r"<h1[^>]*>([\s\S]*?)</h1>", re.IGNORECASE)
